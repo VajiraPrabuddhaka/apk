@@ -35,7 +35,7 @@ const (
 	apkOperator             = "github.com/wso2/apk/adapter/internal/operator"
 	pkgEnforcerXdsCallbacks = "github.com/wso2/apk/adapter/internal/discovery/xds/enforcercallbacks"
 	pkgRouterXdsCallbacks   = "github.com/wso2/apk/adapter/internal/discovery/xds/routercallbacks"
-	pkgXds                  = "github.com/wso2/product-microgateway/adapter/internal/discovery/xds"
+	pkgXds                  = "github.com/wso2/apk/adapter/internal/discovery/xds"
 )
 
 // logger package references
