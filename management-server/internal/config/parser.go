@@ -34,7 +34,7 @@ var (
 	managementServerConfig *Config
 )
 
-//constants related to utility functions
+// constants related to utility functions
 const (
 	// RelativeConfigPath is the relative file path where the configuration file is.
 	relativeConfigPath = "/conf/ga_config.toml"
@@ -68,6 +68,7 @@ func ReadConfigs() *Config {
 		}
 		// Resolve environment variables.
 		config.ResolveConfigEnvValues(reflect.ValueOf(&(managementServerConfig.ManagementServer)).Elem(), "ManagementServer", true)
+		config.ResolveConfigEnvValues(reflect.ValueOf(&(managementServerConfig.Database)).Elem(), "Database", true)
 	})
 	return managementServerConfig
 }
