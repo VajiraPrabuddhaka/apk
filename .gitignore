@@ -32,6 +32,9 @@ build/
 # .vscode
 *.vscode
 
+# .idea
+*.idea
+
 # operator bins
 adapter/internal/operator/bin/*
 
