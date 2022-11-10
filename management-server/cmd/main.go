@@ -18,11 +18,12 @@
 package main
 
 import (
+	"github.com/wso2/apk/management-server/internal/database"
+	"github.com/wso2/apk/management-server/internal/logger"
+	internal_types "github.com/wso2/apk/management-server/internal/types"
+	"github.com/wso2/apk/management-server/internal/xds"
 	"os"
 	"os/signal"
-
-	"github.com/wso2/apk/management-server/internal/logger"
-	"github.com/wso2/apk/management-server/internal/xds"
 )
 
 func main() {
@@ -34,7 +35,15 @@ func main() {
 	defer database.CloseDBConn()
 	go xds.InitAPKMgtServer()
 	// todo(amaliMatharaarachchi) watch data updates and update snapshot accordingly.
-	go xds.FeedData()
+
+	// temp data
+	var arr []*internal_types.ApplicationEvent
+	arr = append(arr, &internal_types.ApplicationEvent{
+		Label:         "dev",
+		UUID:          "b9850225-c7db-444d-87fd-4feeb3c6b3cc",
+		IsRemoveEvent: false,
+	})
+	go xds.AddMultipleApplications(arr)
 
 OUTER:
 	for {
